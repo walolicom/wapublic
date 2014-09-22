@@ -60,7 +60,7 @@ class Wordpresscom extends CI_Controller
 	    {
 	        echo '<br><a href="'. $comment->author->URL .'">'. $comment->author->name .'</a><br>';
 	        echo $comment->content;
-	    }
+        }
     }
     
     // View recent comments
@@ -93,35 +93,35 @@ class Wordpresscom extends CI_Controller
             echo $auth_button;
         }
     }
-
-	// Input comment on a post
-	public function input_comment( $var )
-	{
-		// Load CodeIgniter form validation library
-		$this->load->library('form_validation');
-
-		// Load CodeIgniter form helper
-		$this->load->helper('form');
-
-		if ( is_numeric( $var ) ) { $get_by = 'ID'; } else { $get_by = 'slug'; }
-		$post = $this->wpcom_api->get_post( $get_by, $var );
-		if ( is_numeric( $var ) ) { $post_id = $var; } else { $post_id = $post->ID; }
-
-		echo 'Post title: '. $post->title .'<br>';
-
-		if ( $post->comments_open == 1 )
-		{
-			echo form_open( $this->wpcom_api->post_comment_post_url( $post_id ) ) .'<br>';
-			echo form_input('email', '', 'placeholder="Email"') .'<br>';
-			echo form_input('author', '', 'placeholder="Name"') .'<br>';
-			echo form_input('url', '', 'placeholder="Website"') .'<br>';
-			echo form_textarea('content', '', 'placeholder="Comment"') .'<br>';
-			echo form_submit('submit', 'Post comment') .'<br>';
-			echo form_close();
-		}
-
-		// $this->wpcom_api->post_comment_post( $var, $content );
-	}
+    
+    // Input comment on a post
+    public function input_comment( $var )
+    {
+        // Load CodeIgniter form validation library
+        $this->load->library('form_validation');
+        
+        // Load CodeIgniter form helper
+        $this->load->helper('form');
+        
+        if ( is_numeric( $var ) ) { $get_by = 'ID'; } else { $get_by = 'slug'; }
+        $post = $this->wpcom_api->get_post( $get_by, $var );
+        if ( is_numeric( $var ) ) { $post_id = $var; } else { $post_id = $post->ID; }
+        
+        echo 'Post title: '. $post->title .'<br>';
+        
+        if ( $post->comments_open == 1 )
+        {
+            echo form_open( $this->wpcom_api->post_comment_post_url( $post_id ) ) .'<br>';
+            echo form_input('email', '', 'placeholder="Email"') .'<br>';
+            echo form_input('author', '', 'placeholder="Name"') .'<br>';
+            echo form_input('url', '', 'placeholder="Website"') .'<br>';
+            echo form_textarea('content', '', 'placeholder="Comment"') .'<br>';
+            echo form_submit('submit', 'Post comment') .'<br>';
+            echo form_close();
+        }
+        
+        // $this->wpcom_api->post_comment_post( $var, $content );
+    }
 }
 
 /* End of file wordpresscom.php */
