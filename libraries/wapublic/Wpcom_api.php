@@ -11,7 +11,7 @@ class Wpcom_api
     function __construct(  )
     {
         // Wordpress.com REST API v.1 Service URL
-        $this->service_url 	 = 'https://public-api.wordpress.com/rest/v1';
+        $this->service_url 	        = 'https://public-api.wordpress.com/rest/v1';
         
         // Load CodeIgniter object
         $this->CI =& get_instance();
@@ -49,13 +49,13 @@ class Wpcom_api
         
         $wpcc_state = md5( mt_rand() ); $this->CI->session->set_userdata( 'wpcc_state', $wpcc_state );
         
-        $params 	= array(
+        $params     = array(
                         'response_type' => 'code',
                         'client_id' 	=> $this->client_id,
                         'state' 	=> $wpcc_state,
                         'redirect_uri' 	=> $this->redirect_url,
                     );
-        $url_to 	= $this->authenticate_url .'?'. http_build_query( $params );
+        $url_to     = $this->authenticate_url .'?'. http_build_query( $params );
         
         if ( $this->CI->input->get('error', true) == '' ) { $error_message = ''; }
             else { $error_message = $this->CI->input->get('error_description', true); }
@@ -82,11 +82,11 @@ class Wpcom_api
             $curl 	=   curl_init( $this->request_token_url );
                         curl_setopt( $curl, CURLOPT_POST, true );
                         curl_setopt( $curl, CURLOPT_POSTFIELDS, array(
-                                'client_id' 	=> $this->client_id,
-                                'redirect_uri' 	=> $this->redirect_url,
-                                'client_secret'	=> $this->client_secret,
-                                'code' 			=> $auth_code, // The code from the previous request
-                                'grant_type' 	=> 'authorization_code',
+                                'client_id'     => $this->client_id,
+                                'redirect_uri'  => $this->redirect_url,
+                                'client_secret' => $this->client_secret,
+                                'code'          => $auth_code, // The code from the previous request
+                                'grant_type'    => 'authorization_code',
                             )
                         );
                         curl_setopt( $curl, CURLOPT_RETURNTRANSFER, 1);
