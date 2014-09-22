@@ -52,14 +52,14 @@ class Wordpresscom extends CI_Controller
     	{
     	    echo '<br><a href="'. site_url( 'wordpresscom/input_comment/'. $var ) .'">';
     	    echo 'Post a comment</a><br>';
-	    }
+        }
 	    
-	    $post_comments = $this->wpcom_api->get_comments_post( $post_id );
+        $post_comments = $this->wpcom_api->get_comments_post( $post_id );
 	    
-	    foreach ( $post_comments->comments as $comment )
-	    {
-	        echo '<br><a href="'. $comment->author->URL .'">'. $comment->author->name .'</a><br>';
-	        echo $comment->content;
+        foreach ( $post_comments->comments as $comment )
+        {
+            echo '<br><a href="'. $comment->author->URL .'">'. $comment->author->name .'</a><br>';
+            echo $comment->content;
         }
     }
     
