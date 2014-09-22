@@ -8,13 +8,13 @@
 
 class Wordpresscom extends CI_Controller
 {
-	function __construct(  )
-	{
-		parent::__construct();
-
-		// Load Wapublic Wordpress.com API library
-		$this->load->library( 'wapublic/wpcom_api' );
-	}
+    function __construct(  )
+    {
+        parent::__construct();
+        
+        // Load Wapublic Wordpress.com API library
+        $this->load->library( 'wapublic/wpcom_api' );
+    }
 
 	// View site information
 	public function index(  )
