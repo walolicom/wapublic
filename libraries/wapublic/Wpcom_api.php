@@ -11,7 +11,7 @@ class Wpcom_api
     function __construct(  )
     {
         // Wordpress.com REST API v.1 Service URL
-        $this->service_url 	        = 'https://public-api.wordpress.com/rest/v1';
+        $this->service_url          = 'https://public-api.wordpress.com/rest/v1';
         
         // Load CodeIgniter object
         $this->CI =& get_instance();
@@ -91,8 +91,8 @@ class Wpcom_api
                         );
                         curl_setopt( $curl, CURLOPT_RETURNTRANSFER, 1);
                         
-            $auth 	= curl_exec( $curl );
-            $secret = json_decode( $auth );
+            $auth 	=   curl_exec( $curl );
+            $secret =   json_decode( $auth );
             return $secret;
         }
         
