@@ -1,13 +1,13 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- *	Waloli Public Blogging CMS (wapublic)
- *	Wapublic configuration file
- *	@author walolicom
+ *  Waloli Public Blogging CMS (wapublic)
+ *  Wapublic configuration file
+ *  @author walolicom
  */
 
 /**
- *	Wordpress.com API
+ *  Wordpress.com API
  */
 
 $config['wpcom_app_name']           = 'My Wordpress.com Blog';
