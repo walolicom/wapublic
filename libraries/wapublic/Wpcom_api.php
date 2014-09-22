@@ -79,7 +79,7 @@ class Wpcom_api
             if ( $auth_state != $wpcc_state )
                 { die( 'Warning! State mismatch. Authentication attempt may have been compromised.' ); }
                 
-            $curl 	=   curl_init( $this->request_token_url );
+            $curl   =   curl_init( $this->request_token_url );
                         curl_setopt( $curl, CURLOPT_POST, true );
                         curl_setopt( $curl, CURLOPT_POSTFIELDS, array(
                                 'client_id'     => $this->client_id,
