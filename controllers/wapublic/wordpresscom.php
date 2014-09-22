@@ -1,9 +1,9 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- *	Waloli Public Blogging CMS (wapublic)
- *	Wapublic Wordpress.com API contoller example file
- *	@author walolicom
+ *  Waloli Public Blogging CMS (wapublic)
+ *  Wapublic Wordpress.com API contoller example file
+ *  @author walolicom
  */
 
 class Wordpresscom extends CI_Controller
