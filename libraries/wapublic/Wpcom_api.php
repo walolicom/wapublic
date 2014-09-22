@@ -90,8 +90,8 @@ class Wpcom_api
                             )
                         );
                         curl_setopt( $curl, CURLOPT_RETURNTRANSFER, 1);
-                        
-            $auth 	=   curl_exec( $curl );
+
+            $auth   =   curl_exec( $curl );
             $secret =   json_decode( $auth );
             return $secret;
         }
