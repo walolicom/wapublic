@@ -49,25 +49,25 @@ class Wordpresscom extends CI_Controller
     	echo 'Comments count: '.    $post->comment_count .'<br>';
     	
     	if ( $post->comments_open == 1 )
-		{
-		    echo '<br><a href="'. site_url( 'wordpresscom/input_comment/'. $var ) .'">';
-		    echo 'Post a comment</a><br>';
-        }
-        
-        $post_comments = $this->wpcom_api->get_comments_post( $post_id );
-        
-        foreach ( $post_comments->comments as $comment )
-		{
-		    echo '<br><a href="'. $comment->author->URL .'">'. $comment->author->name .'</a><br>';
-		    echo $comment->content;
-		}
-	}
-	
-	// View recent comments
-	public function recent_comments( $page = '' )
-	{
-	    $recent_comments = $this->wpcom_api->get_comments_recent( $page );
-	    echo '<pre>'; print_r( $recent_comments );
+    	{
+    	    echo '<br><a href="'. site_url( 'wordpresscom/input_comment/'. $var ) .'">';
+    	    echo 'Post a comment</a><br>';
+	    }
+	    
+	    $post_comments = $this->wpcom_api->get_comments_post( $post_id );
+	    
+	    foreach ( $post_comments->comments as $comment )
+	    {
+	        echo '<br><a href="'. $comment->author->URL .'">'. $comment->author->name .'</a><br>';
+	        echo $comment->content;
+	    }
+    }
+    
+    // View recent comments
+    public function recent_comments( $page = '' )
+    {
+        $recent_comments = $this->wpcom_api->get_comments_recent( $page );
+        echo '<pre>'; print_r( $recent_comments );
     }
     
     // View a post comments
@@ -76,23 +76,23 @@ class Wordpresscom extends CI_Controller
         $post_comments = $this->wpcom_api->get_comments_post( $var, $page );
         echo '<pre>'; print_r( $post_comments );
     }
-
-	// Get authentication code with Wordpress.com API
-	public function auth(  )
-	{
-		$auth_code = $this->input->get('code', true);
-
-		if ( $auth_code == true )
-		{
-			$auth = $this->wpcom_api->get_auth( $auth_code );
-			echo 'Code: '. $auth_code; echo '<pre>'; print_r( $auth );
-		}
-		else
-		{
-			$auth_button = $this->wpcom_api->get_auth_button();
-			echo $auth_button;
-		}	
-	}
+    
+    // Get authentication code with Wordpress.com API
+    public function auth(  )
+    {
+        $auth_code = $this->input->get('code', true);
+        
+        if ( $auth_code == true )
+        {
+            $auth = $this->wpcom_api->get_auth( $auth_code );
+            echo 'Code: '. $auth_code; echo '<pre>'; print_r( $auth );
+        }
+        else
+        {
+            $auth_button = $this->wpcom_api->get_auth_button();
+            echo $auth_button;
+        }
+    }
 
 	// Input comment on a post
 	public function input_comment( $var )
