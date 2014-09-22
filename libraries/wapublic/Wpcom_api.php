@@ -1,46 +1,46 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- *	Waloli Public Blogging CMS (wapublic)
- *	Wapublic Wordpress.com API library file
- *	@author walolicom
+ *  Waloli Public Blogging CMS (wapublic)
+ *  Wapublic Wordpress.com API library file
+ *  @author walolicom
  */
 
 class Wpcom_api
 {
-	function __construct(  )
-	{
-		// Wordpress.com REST API v.1 Service URL
-		$this->service_url 	 = 'https://public-api.wordpress.com/rest/v1';
-
-		// Load CodeIgniter object
-		$this->CI =& get_instance();
-
-		// Load wapublic config
-		$this->CI->load->config('wapublic');
-
-		$this->app_name 	 = $this->CI->config->item('wpcom_app_name');
-		$this->client_id 	 = $this->CI->config->item('wpcom_client_id');
-		$this->client_secret 	 = $this->CI->config->item('wpcom_client_secret');
-		$this->auth_code 	 = $this->CI->config->item('wpcom_auth_code');
-		$this->login_url	 = $this->CI->config->item('wpcom_login_url');
-		$this->redirect_url	 = $this->CI->config->item('wpcom_redirect_url');
-		$this->request_token_url = $this->CI->config->item('wpcom_request_token_url');
-		$this->authenticate_url	 = $this->CI->config->item('wpcom_authenticate_url');
-		$this->site 		 = $this->CI->config->item('wpcom_site');
-		$wpcom_tag_lang 	 = $this->CI->config->item('wpcom_tag_lang');
-		$wpcom_per_page 	 = $this->CI->config->item('wpcom_per_page');
-		
-		$this->site_info	 = $this->get_site(); // wordpress.com site info
-		$this->site_id 		 = $this->site_info->ID; // wordpress.com site ID
-		$this->get_posts_url 	 = $this->site_info->meta->links->posts; // wordpress.com posts url
-		$this->get_comments_url	 = $this->site_info->meta->links->comments; // wordpress.com comments url
-
-		if ( $wpcom_tag_lang == '' ) { $this->lang = ''; }
-			else { $this->lang = 'tag='. $wpcom_tag_lang; }
-		if ( $wpcom_per_page == '' ) { $this->per_page = 'number=10'; }
-			else { $this->per_page = 'number='. $wpcom_per_page; }
-	}
+    function __construct(  )
+    {
+        // Wordpress.com REST API v.1 Service URL
+        $this->service_url 	 = 'https://public-api.wordpress.com/rest/v1';
+        
+        // Load CodeIgniter object
+        $this->CI =& get_instance();
+        
+        // Load wapublic config
+        $this->CI->load->config('wapublic');
+        
+        $this->app_name             = $this->CI->config->item('wpcom_app_name');
+        $this->client_id            = $this->CI->config->item('wpcom_client_id');
+        $this->client_secret        = $this->CI->config->item('wpcom_client_secret');
+        $this->auth_code            = $this->CI->config->item('wpcom_auth_code');
+        $this->login_url            = $this->CI->config->item('wpcom_login_url');
+        $this->redirect_url         = $this->CI->config->item('wpcom_redirect_url');
+        $this->request_token_url    = $this->CI->config->item('wpcom_request_token_url');
+        $this->authenticate_url     = $this->CI->config->item('wpcom_authenticate_url');
+        $this->site                 = $this->CI->config->item('wpcom_site');
+        $wpcom_tag_lang             = $this->CI->config->item('wpcom_tag_lang');
+        $wpcom_per_page             = $this->CI->config->item('wpcom_per_page');
+        
+        $this->site_info            = $this->get_site(); // wordpress.com site info
+        $this->site_id              = $this->site_info->ID; // wordpress.com site ID
+        $this->get_posts_url        = $this->site_info->meta->links->posts; // wordpress.com posts url
+        $this->get_comments_url     = $this->site_info->meta->links->comments; // wordpress.com comments url
+        
+        if ( $wpcom_tag_lang == '' ) { $this->lang = ''; }
+            else { $this->lang = 'tag='. $wpcom_tag_lang; }
+        if ( $wpcom_per_page == '' ) { $this->per_page = 'number=10'; }
+            else { $this->per_page = 'number='. $wpcom_per_page; }
+    }
 
 	public function get_auth_button(  )
 	{		
