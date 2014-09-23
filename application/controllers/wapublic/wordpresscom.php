@@ -14,7 +14,7 @@ class Wordpresscom extends CI_Controller
 		
 		// Load Wapublic Wordpress.com API library
 		$this->wpcom_api = $this->load->library( 'wapublic/wapublic_wpcom' );
-    }
+	}
     
 	// View site information
 	public function index(  )
