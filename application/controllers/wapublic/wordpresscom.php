@@ -3,7 +3,7 @@
 /**
  *  Waloli Public Blogging CMS (wapublic)
  *  Wapublic Wordpress.com API contoller example file
- *  @author walolicom
+ *  @author latuminggi
  */
 
 class Wordpresscom extends CI_Controller

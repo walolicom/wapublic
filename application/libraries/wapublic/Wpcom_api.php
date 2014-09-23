@@ -3,7 +3,7 @@
 /**
  *  Waloli Public Blogging CMS (wapublic)
  *  Wapublic Wordpress.com API library file
- *  @author walolicom
+ *  @author latuminggi
  */
 
 class Wpcom_api

@@ -3,7 +3,7 @@
 /**
  *  Waloli Public Blogging CMS (wapublic)
  *  Wapublic configuration file
- *  @author walolicom
+ *  @author latuminggi
  */
 
 /**
