@@ -7,7 +7,7 @@
  */
 
 /**
- *  Wordpress.com API
+ *	Wordpress.com API
  */
 
 $config['wpcom_app_name']           = 'My Wordpress.com Blog';
