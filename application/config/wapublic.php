@@ -36,5 +36,6 @@ $config['wpcom_tag_lang']		= '';
 $config['wpcom_per_page']		= '';
 // wordpress.com posts/comments per page to show, default 10 per page (integer | optional)
 
+
 /* End of file wapublic.php */
 /* Location: ./application/config/wapublic.php */
