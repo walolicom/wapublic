@@ -6,7 +6,7 @@
  *  @author latuminggi
  */
 
-class Wpcom_api
+class Wapublic_wpcom
 {
         function __construct(  )
         {

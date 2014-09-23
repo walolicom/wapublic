@@ -13,8 +13,8 @@ class Wordpresscom extends CI_Controller
 		parent::__construct();
 		
 		// Load Wapublic Wordpress.com API library
-		$this->load->library( 'wapublic/wpcom_api' );
-    	}
+		$this->wpcom_api = $this->load->library( 'wapublic/wapublic_wpcom' );
+    }
     
 	// View site information
 	public function index(  )
