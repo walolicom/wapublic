@@ -13,20 +13,20 @@ class Wordpresscom extends CI_Controller
 		parent::__construct();
 		
 		// Load Wapublic Wordpress.com API library
-		$this->wpcom_api = $this->load->library( 'wapublic/wapublic_wpcom' );
+		$this->load->library( 'wapublic/wapublic_wpcom' );
 	}
     
 	// View site information
 	public function index(  )
 	{
-		$site = $this->wpcom_api->get_site();
+		$site = $this->wapublic_wpcom->get_site();
 		echo '<pre>'; print_r( $site );
 	}
 	
 	// View recent posts
 	public function blog( $page = '' )
 	{
-		$posts = $this->wpcom_api->get_posts( $page );
+		$posts = $this->wapublic_wpcom->get_posts( $page );
 		echo '<pre>'; print_r( $posts );
 	}
 	
@@ -37,7 +37,7 @@ class Wordpresscom extends CI_Controller
 		$this->load->helper('url');
 		
 		if ( is_numeric( $var ) ) { $get_by = 'ID'; } else { $get_by = 'slug'; }
-		$post = $this->wpcom_api->get_post( $get_by, $var );
+		$post = $this->wapublic_wpcom->get_post( $get_by, $var );
 		if ( is_numeric( $var ) ) { $post_id = $var; } else { $post_id = $post->ID; }
 		
 		// echo '<pre>'; print_r( $post );
@@ -54,7 +54,7 @@ class Wordpresscom extends CI_Controller
 		        echo 'Post a comment</a><br>';
 		}
 	    
-		$post_comments = $this->wpcom_api->get_comments_post( $post_id );
+		$post_comments = $this->wapublic_wpcom->get_comments_post( $post_id );
 	    
 		foreach ( $post_comments->comments as $comment )
 		{
@@ -66,14 +66,14 @@ class Wordpresscom extends CI_Controller
 	// View recent comments
 	public function recent_comments( $page = '' )
 	{
-		$recent_comments = $this->wpcom_api->get_comments_recent( $page );
+		$recent_comments = $this->wapublic_wpcom->get_comments_recent( $page );
 		echo '<pre>'; print_r( $recent_comments );
 	}
 	
 	// View a post comments
 	public function post_comments( $var, $page = '' )
 	{
-		$post_comments = $this->wpcom_api->get_comments_post( $var, $page );
+		$post_comments = $this->wapublic_wpcom->get_comments_post( $var, $page );
 		echo '<pre>'; print_r( $post_comments );
 	}
 	
@@ -84,12 +84,12 @@ class Wordpresscom extends CI_Controller
 		
 		if ( $auth_code == true )
 		{
-			$auth = $this->wpcom_api->get_auth( $auth_code );
+			$auth = $this->wapublic_wpcom->get_auth( $auth_code );
 			echo 'Code: '. $auth_code; echo '<pre>'; print_r( $auth );
 		}
 		else
 		{
-			$auth_button = $this->wpcom_api->get_auth_button();
+			$auth_button = $this->wapublic_wpcom->get_auth_button();
 			echo $auth_button;
 		}
 	}
@@ -104,14 +104,14 @@ class Wordpresscom extends CI_Controller
 		$this->load->helper('form');
 		
 		if ( is_numeric( $var ) ) { $get_by = 'ID'; } else { $get_by = 'slug'; }
-		$post = $this->wpcom_api->get_post( $get_by, $var );
+		$post = $this->wapublic_wpcom->get_post( $get_by, $var );
 		if ( is_numeric( $var ) ) { $post_id = $var; } else { $post_id = $post->ID; }
 		
 		echo 'Post title: '. $post->title .'<br>';
 		
 		if ( $post->comments_open == 1 )
 		{
-			echo form_open( $this->wpcom_api->post_comment_post_url( $post_id ) ) .'<br>';
+			echo form_open( $this->wapublic_wpcom->post_comment_post_url( $post_id ) ) .'<br>';
 			echo form_input('email', '', 'placeholder="Email"') .'<br>';
 			echo form_input('author', '', 'placeholder="Name"') .'<br>';
 			echo form_input('url', '', 'placeholder="Website"') .'<br>';
@@ -120,7 +120,7 @@ class Wordpresscom extends CI_Controller
 			echo form_close();
 		}
 		
-		// $this->wpcom_api->post_comment_post( $var, $content );
+		// $this->wapublic_wpcom->post_comment_post( $var, $content );
 	}
 }
 
